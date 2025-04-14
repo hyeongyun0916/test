@@ -26,3 +26,4 @@ go.work.sum
 
 .vscode
 .go-version
+.DS_Store
