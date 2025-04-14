@@ -1,8 +1,9 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+
+	"github.com/pkg/errors"
 )
 
 func log(msg string) {
@@ -18,18 +19,12 @@ func main() {
 
 func reconcile() error {
 	err := func1()
-	if err != nil {
-		log("Error in func1: " + err.Error())
-	}
-	return err
+	return errors.Wrap(err, "reconcile failed")
 }
 
 func func1() error {
 	err := func2()
-	if err != nil {
-		log("Error in func2: " + err.Error())
-	}
-	return err
+	return errors.Wrap(err, "func1 failed")
 }
 
 func func2() error {
